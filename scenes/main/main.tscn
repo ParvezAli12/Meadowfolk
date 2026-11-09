@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bemn6fiec2ka6" path="res://scenes/player/player.tscn" id="1_hyk8p"]
 [ext_resource type="Script" uid="uid://08o67esefcbm" path="res://scripts/camera_rig.gd" id="2_iuonh"]
+[ext_resource type="Script" uid="uid://cxt48vg0l6ete" path="res://scripts/tile_cursor.gd" id="3_k2fmo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vom5j"]
 albedo_color = Color(0.21214908, 0.4781819, 0.24135941, 1)
@@ -12,6 +13,14 @@ size = Vector2(20, 20)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_hyk8p"]
 data = PackedVector3Array(10, 0, 10, -10, 0, 10, 10, 0, -10, -10, 0, 10, -10, 0, -10, 10, 0, -10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oenq4"]
+transparency = 1
+albedo_color = Color(1, 1, 0.6666667, 0.81960785)
+
+[sub_resource type="BoxMesh" id="BoxMesh_n1dt2"]
+material = SubResource("StandardMaterial3D_oenq4")
+size = Vector3(0.95, 0.05, 0.95)
 
 [node name="Main" type="Node3D" unique_id=800150577]
 
@@ -36,3 +45,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 7, 7)
 fov = 45.0
 script = ExtResource("2_iuonh")
+
+[node name="TileCursor" type="MeshInstance3D" parent="." unique_id=150851885]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.37586665, 0.0053195357, 0.10299468)
+mesh = SubResource("BoxMesh_n1dt2")
+script = ExtResource("3_k2fmo")
