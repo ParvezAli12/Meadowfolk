@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c4aathxmmlayb"]
 
 [ext_resource type="PackedScene" uid="uid://bemn6fiec2ka6" path="res://scenes/player/player.tscn" id="1_hyk8p"]
+[ext_resource type="Script" uid="uid://08o67esefcbm" path="res://scripts/camera_rig.gd" id="2_iuonh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vom5j"]
 albedo_color = Color(0.21214908, 0.4781819, 0.24135941, 1)
@@ -18,9 +19,6 @@ data = PackedVector3Array(10, 0, 10, -10, 0, 10, 10, 0, -10, -10, 0, 10, -10, 0,
 transform = Transform3D(0.8660254, 0.38302222, -0.32139382, 0, 0.64278764, 0.76604444, 0.5, -0.66341394, 0.5566704, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=2126831447]
-transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 10, 10)
-
 [node name="Ground" type="MeshInstance3D" parent="." unique_id=1103036685]
 mesh = SubResource("PlaneMesh_oenq4")
 
@@ -31,3 +29,10 @@ shape = SubResource("ConcavePolygonShape3D_hyk8p")
 
 [node name="Player" parent="." unique_id=1839384554 instance=ExtResource("1_hyk8p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="CameraRig" type="Node3D" parent="." unique_id=1626877032]
+
+[node name="Camera3D" type="Camera3D" parent="CameraRig" unique_id=31629231]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 7, 7)
+fov = 45.0
+script = ExtResource("2_iuonh")
