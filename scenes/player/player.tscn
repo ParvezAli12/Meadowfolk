@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bemn6fiec2ka6"]
+
+[ext_resource type="Script" uid="uid://d24qotmwx2nig" path="res://scripts/player.gd" id="1_8afob"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n1dt2"]
+radius = 0.4
+height = 1.8
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_n1dt2"]
+radius = 0.4
+height = 1.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_n1dt2"]
+size = Vector3(0.3, 0.3, 0.3)
+
+[node name="Player" type="CharacterBody3D" unique_id=1839384554]
+script = ExtResource("1_8afob")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1156587307]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_n1dt2")
+
+[node name="Model" type="Node3D" parent="." unique_id=397772727]
+
+[node name="Body" type="MeshInstance3D" parent="Model" unique_id=1229507143]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+mesh = SubResource("CapsuleMesh_n1dt2")
+
+[node name="Nose" type="MeshInstance3D" parent="Model" unique_id=1465233202]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, -0.4)
+mesh = SubResource("BoxMesh_n1dt2")
