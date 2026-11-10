@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://ks74s7r5vn0f"]
+
+[ext_resource type="Script" uid="uid://cut1burmprg8w" path="res://scripts/hud.gd" id="1_yw0i7"]
+
+[node name="HUD" type="CanvasLayer" unique_id=1473065083]
+script = ExtResource("1_yw0i7")
+
+[node name="ClockLabel" type="Label" parent="." unique_id=1285980014]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 60.0
+offset_bottom = 59.0
+theme_override_font_sizes/font_size = 28

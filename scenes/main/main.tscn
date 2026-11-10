@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://c4aathxmmlayb"]
 
 [ext_resource type="PackedScene" uid="uid://bemn6fiec2ka6" path="res://scenes/player/player.tscn" id="1_hyk8p"]
+[ext_resource type="Script" uid="uid://cbmo27urqug66" path="res://scripts/day_night.gd" id="1_l3cfh"]
 [ext_resource type="Script" uid="uid://08o67esefcbm" path="res://scripts/camera_rig.gd" id="2_iuonh"]
 [ext_resource type="Script" uid="uid://cxt48vg0l6ete" path="res://scripts/tile_cursor.gd" id="3_k2fmo"]
+[ext_resource type="PackedScene" uid="uid://ks74s7r5vn0f" path="res://scenes/ui/hud.tscn" id="5_6q06x"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vom5j"]
 albedo_color = Color(0.21214908, 0.4781819, 0.24135941, 1)
@@ -22,13 +24,25 @@ albedo_color = Color(1, 1, 0.6666667, 0.81960785)
 material = SubResource("StandardMaterial3D_oenq4")
 size = Vector3(0.95, 0.05, 0.95)
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_c4uea"]
+
+[sub_resource type="Sky" id="Sky_oenq4"]
+sky_material = SubResource("ProceduralSkyMaterial_c4uea")
+
+[sub_resource type="Environment" id="Environment_n1dt2"]
+background_mode = 2
+sky = SubResource("Sky_oenq4")
+ambient_light_source = 3
+
 [node name="Main" type="Node3D" unique_id=800150577]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=804485015]
 transform = Transform3D(0.8660254, 0.38302222, -0.32139382, 0, 0.64278764, 0.76604444, 0.5, -0.66341394, 0.5566704, 0, 0, 0)
 shadow_enabled = true
+script = ExtResource("1_l3cfh")
 
 [node name="Ground" type="MeshInstance3D" parent="." unique_id=1103036685]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0014886856, 0, 0.011151791)
 mesh = SubResource("PlaneMesh_oenq4")
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Ground" unique_id=1109117528]
@@ -50,3 +64,8 @@ script = ExtResource("2_iuonh")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.37586665, 0.0053195357, 0.10299468)
 mesh = SubResource("BoxMesh_n1dt2")
 script = ExtResource("3_k2fmo")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1175530481]
+environment = SubResource("Environment_n1dt2")
+
+[node name="HUD" parent="." unique_id=1473065083 instance=ExtResource("5_6q06x")]
